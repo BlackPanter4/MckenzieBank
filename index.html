@@ -1,82 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCKENZIE BANK Q777 - Luchanas</title>
-<style>
-body{background:#000;color:#fff;font-family:Arial;margin:0;padding:10px}
-.card{background:#0a0a0a;border:2px solid gold;border-radius:15px;padding:20px;margin:15px 0;box-shadow:0 0 15px rgba(255,215,0,.3)}
-input{width:100%;padding:14px;margin:8px 0;border-radius:8px;border:1px solid gold;background:#111;color:#fff;box-sizing:border-box}
-.btn-gold{width:100%;padding:16px;background:linear-gradient(90deg,gold,#FFA500);color:#000;font-weight:900;border:none;border-radius:10px;font-size:16px;cursor:pointer}
-.btn-green{width:100%;padding:14px;background:#00aa00;color:#fff;border:none;border-radius:10px;font-weight:bold;margin:5px 0;cursor:pointer}
-h2{color:gold;text-align:center}
-small{color:#aaa}
-</style>
-</head>
-<body>
-
-<div class="card">
-<h2>🦁 MCKENZIE BANK Q777</h2>
-<p style="text-align:center">"Las raices son amargas, los frutos dulces" - Aristoteles<br><small>Luchanas, Coah. - Para el pueblo</small></p>
-
-<h3 style="color:gold">1. CREA TU USUARIO Q777</h3>
-<input id="q_nombre" placeholder="Tu nombre completo">
-<input id="q_whats" placeholder="Tu WhatsApp">
-<input id="q_ejido" placeholder="Ejido / Colonia" value="Luchanas">
-<button class="btn-gold" onclick="crearQ777()">CREAR MI USUARIO Q777</button>
-
-<div id="q_resultado" style="display:none;background:#111;border:1px dashed gold;padding:15px;margin-top:15px;border-radius:10px;text-align:center">
-<p style="color:gold">TU ID:</p>
-<h2 id="q_id"></h2>
-<p id="q_bienvenida"></p>
+<!-- OLVERA MOTOR + MCKENZIE BANK Q777 -->
+<div style="border:2px solid gold;padding:10px;text-align:center">
+  <h2>OLVERA MOTOR - Encendido sin llave</h2>
+  <p>Bocho del propietario - Demo con módulos WiFi y relevadores RES</p>
+  <button onclick="fetch('http://192.168.4.1/on')">📱 ENCENDER SIN LLAVE</button>
+  <button onclick="fetch('http://192.168.4.1/off')">APAGAR</button>
+  <button onclick="let k=prompt('KM actual:'); localStorage.setItem('km_'+Date.now(),k); alert('KM '+k+' guardado para servicio');">🛣️ BOTON KILOMETRAJE</button>
 </div>
-</div>
-
-<div class="card" id="productos" style="display:none">
-<h2>2. YA ERES Q777 - ELIGE</h2>
-<button class="btn-green" onclick="comprar('CETES $100')">AHORRADOR #00001 - $100 CETES = $109.25</button>
-<button class="btn-green" onclick="comprar('TIERRA + TALLER + $100')">INVERSOR #00001 - Tierra + Taller</button>
-<button class="btn-green" onclick="comprar('TARJETA JR BINANCE')">TARJETA NEGRA JR - Padre controla, Jr aprende</button>
-<p style="text-align:center"><small>Tu compra se registra con tu ID Q777 y me llega directo a mi WhatsApp</small></p>
-</div>
-
-<div class="card">
-<h3 style="color:gold">¿Que es?</h3>
-<p>- Ahorra $100 en CETES 9.25%<br>- Invierte en tierra real de Luchanas + logistica Q777<br>- Defensa Q777 - Art 16</p>
-<p><small>Fundador: Isaias - BlackPanter4<br>Modelo: Japon + Europa + Mexico + Q777</small></p>
-</div>
-
-<script>
-let usuarioActual=null;
-function crearQ777(){
- let n=document.getElementById('q_nombre').value.trim();
- let w=document.getElementById('q_whats').value.trim();
- let e=document.getElementById('q_ejido').value.trim()||'Luchanas';
- if(!n||!w){ alert('Pon nombre y WhatsApp'); return; }
- let id='7770-'+Math.floor(1000+Math.random()*9000)+'-'+Date.now().toString().slice(-4);
- usuarioActual={nombre:n,whats:w,ejido:e,id:id,fecha:new Date().toLocaleString()};
- localStorage.setItem('usuario_actual_Q777', JSON.stringify(usuarioActual));
- 
- document.getElementById('q_id').innerText=id;
- document.getElementById('q_bienvenida').innerText='Bienvenido '+n+' de '+e;
- document.getElementById('q_resultado').style.display='block';
- document.getElementById('productos').style.display='block';
-
- // Manda directo a tu 528721253222 - SIN EMOJIS PARA QUE NO FALLE EN ACODE
- let mensaje='NUEVO USUARIO MCKENZIE BANK Q777 - Nombre: '+n+' - Whats: '+w+' - Ejido: '+e+' - ID: '+id+' - Fecha: '+new Date().toLocaleString();
- let url='https://wa.me/528721253222?text='+encodeURIComponent(mensaje);
- // En localhost Acode no jala, en GitHub Pages si
- setTimeout(()=>{ window.location.href=url; }, 800);
-}
-
-function comprar(producto){
- if(!usuarioActual) usuarioActual=JSON.parse(localStorage.getItem('usuario_actual_Q777'));
- if(!usuarioActual){ alert('Primero crea tu usuario arriba'); return; }
- let mensaje='COMPRA Q777 - Usuario: '+usuarioActual.nombre+' - ID: '+usuarioActual.id+' - Whats: '+usuarioActual.whats+' - Quiere: '+producto+' - Ejido: '+usuarioActual.ejido;
- let url='https://wa.me/528721253222?text='+encodeURIComponent(mensaje);
- window.location.href=url;
-}
-</script>
-</body>
-</html>
